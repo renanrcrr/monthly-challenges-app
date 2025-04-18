@@ -38,5 +38,7 @@ def monthly_challenge_by_number(request, month):
 
 # View function to handle textual month input (e.g., /challenges/january/)
 def monthly_challenge(request, month):
+    challenge_text = month_challenges.get(month, "<h1>Invalid month</h1>")
+    response_data = f"<h1>{challenge_text}</h1>"
     # Return the challenge text for the given month or a default error message
-    return HttpResponse(month_challenges.get(month, "Invalid month"))
+    return HttpResponse(response_data)
