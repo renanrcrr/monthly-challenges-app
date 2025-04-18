@@ -18,6 +18,23 @@ month_challenges = {
     "december": "December Challenge",
 }
 
+def index(request):
+    # Generate a list of month names from the dictionary keys
+    months = list(month_challenges.keys())
+
+    # Create an HTML response with links to each month's challenge
+    response_data = "<h1>Monthly Challenges</h1>"
+    response_data += "<p>Click on a month to see the challenge:</p>"
+
+    # Loop through the month names and create links to their respective challenge pages
+    for month in months:
+        month_path = reverse("month-challenge", args=[month])
+        month_capitalize = month.capitalize()
+        response_data += f'<a href="{month_path}">{month_capitalize}</a><br>'
+    
+    # Return the generated HTML as the response
+    return HttpResponse(response_data)
+
 # View function to handle numeric month input (e.g., /challenges/1/)
 def monthly_challenge_by_number(request, month):
     # Convert the keys of the dictionary into a list (i.e., list of months)

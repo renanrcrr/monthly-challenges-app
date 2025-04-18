@@ -4,6 +4,7 @@ from . import views
 
 # URL patterns for the "challenges" app
 urlpatterns = [
+    path("", views.index), # /challenges/
     # Route to handle numeric month input (e.g., /challenges/1, /challenges/12)
     # This will call the 'monthly_challenge_by_number' view and pass the number as an integer
     path("<int:month>", views.monthly_challenge_by_number),
