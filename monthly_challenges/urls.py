@@ -17,7 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# List of URL patterns for the Django project
 urlpatterns = [
+    # Route to the Django admin interface
     path('admin/', admin.site.urls),
+    
+    # Include all the URL patterns from the "challenges" app under the "challenges/" base path
+    # This allows you to organize URLs in a modular way
     path("challenges/", include("challenges.urls"))
 ]
